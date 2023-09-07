@@ -1,9 +1,13 @@
 import React from 'react'
+import { Link, NavLink } from 'react-router-dom';
+import { SiShopware } from 'react-icons/si';
+import { MdOutlineCancel } from 'react-icons/md';
+import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
-const SideBar = () => {
+const Sidebar = () => {
   return (
-    <div>SideBar</div>
+    <div>Sidebar</div>
   )
 }
 
-export default SideBar
+export default Sidebar
