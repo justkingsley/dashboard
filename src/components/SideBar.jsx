@@ -16,19 +16,17 @@ const Sidebar = () => {
         <>
           <div className='flex justify-between items-center'>
 
-
             <Link to='/' onClick={() => {}} className='items-center gap-3 flex ml-3 mt-4 text-xl font-extrabold tracking-tight dark:text-white text-slate-800'>
               <SiShopware /> <span>Shopify</span>
             </Link>
 
-              <TooltipComponent
-                content='Menu' position='BottomCenter'>
+              <TooltipComponent content='Menu' position='BottomCenter'>
               <button type='button' onClick={() => {}}
                 className='text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden'>
                 <MdOutlineCancel />
               </button>
               </TooltipComponent>
-              
+
           </div>
 
           <div className='mt-10'>
