@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const StateContext = createContext();
 
@@ -12,11 +12,13 @@ const initialState = {
 export const ContextProvider = ({children}) => {
 
     const [activeMenu, setActiveMenu] = useState(true);
+    const [isClicked, setIsClicked] = useState(initialState);
 
-    return (
+    return ( 
         <StateContext.Provider
             value = {{
                 activeMenu, setActiveMenu,
+                isClicked, setIsClicked,
             }}>
             {children}
         </StateContext.Provider>
