@@ -25,7 +25,7 @@ const Sidebar = () => {
             </Link>
 
               <TooltipComponent content='Menu' position='BottomCenter'>
-              <button type='button' onClick={() => {}} className='block mt-4 text-md p-3 hover:bg-light-gray'>
+              <button type='button' onClick={() => {}} className='block mt-4 text-lg p-3 hover:bg-light-gray'>
                 <MdOutlineCancel/>
               </button>
               </TooltipComponent>
@@ -45,8 +45,7 @@ const Sidebar = () => {
                   key={link.name}
                   onClick={() => {}}
                   className={({isActive}) => 
-                    isActive ? activeLink : normalLink
-                  }
+                    isActive ? activeLink : normalLink}
                   >
                     {link.icon}
                     <span className='capitalize'>
