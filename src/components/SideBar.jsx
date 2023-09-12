@@ -10,10 +10,12 @@ const Sidebar = () => {
 
   const activeMenu = true;
 
-  const activeLinke = 'flex items-center gap-5 pl-4 pb-2.5 rounded-lg mt-3'
+  const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-sm text-white'
+  const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-sm text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m2'
+
 
   return (
-    <div className='ml-3 h-screen md:overflow-hidden md:small:overflow-auto overflow-auto pb-10'>
+    <div className='ml-3 h-screen md:overflow-auto md:small:overflow-auto overflow-auto pb-10'>
       {activeMenu && (
         <>
           <div className='flex justify-between items-center'>
@@ -23,7 +25,7 @@ const Sidebar = () => {
             </Link>
 
               <TooltipComponent content='Menu' position='BottomCenter'>
-              <button type='button' onClick={() => {}} className='block mt-4 text-xl p-3 hover:bg-light-gray md:hidden'>
+              <button type='button' onClick={() => {}} className='block mt-4 text-md p-3 hover:bg-light-gray'>
                 <MdOutlineCancel/>
               </button>
               </TooltipComponent>
@@ -31,20 +33,25 @@ const Sidebar = () => {
           </div>
 
           <div className='mt-10'>
-            {links.map((items) => 
-              <div key={items.title}>
-                <p className='capitalize m-3 text-gray-500 mt-4'>
-                  {items.title}
+            {links.map((item) => 
+              <div key={item.title}>
+                <p className='uppercase m-3 text-gray-600 mt-4'>
+                  {item.title}
                 </p>
 
-                {items.links.map((link) => (
+                {item.links.map((link) => (
                   <NavLink
                   to={`/${link.name}`}
                   key={link.name}
                   onClick={() => {}}
-                  className={({}) => {}}
+                  className={({isActive}) => 
+                    isActive ? activeLink : normalLink
+                  }
                   >
-
+                    {link.icon}
+                    <span className='capitalize'>
+                      {link.name}
+                    </span>
                   </NavLink>
                 ))}
               </div>
