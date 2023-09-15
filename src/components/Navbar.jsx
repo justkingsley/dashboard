@@ -8,7 +8,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import avatar from '../data/avatar.jpg';
-import { Cart, Chat, Notification, UserProfile } from '.'
+import { Cart, Chat, Notifications, UserProfile } from '.'
 import { useStateContext } from '../contexts/ContextProvider';
 
 const NavButton = ({title, customFunc, icon, color, dotColor}) => (
@@ -27,7 +27,19 @@ const NavButton = ({title, customFunc, icon, color, dotColor}) => (
 
 const Navbar = () => {
 
-  const { activeMenu, setActiveMenu, isClicked, setIsClicked} = useStateContext();
+  const { activeMenu, setActiveMenu, isClicked, setIsClicked, handleClick, screenSize, setScreenSize} = useStateContext();
+
+  useEffect(() => {
+
+    const handleResize = () => setScreenSize(window.innerWidth)
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize);
+    
+  }, [])
   return (
     <div className='flex justify-between md:mx-6 p-2 relative'>
       <NavButton title='Menu' customFunc={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)} color='blue' icon={<AiOutlineMenu/>}/>
@@ -55,7 +67,7 @@ const Navbar = () => {
 
       {isClicked.cart && <Cart />}
       {isClicked.chat && <Chat />}
-      {isClicked.notification && <Notification />}
+      {isClicked.notification && <Notifications />}
       {isClicked.userProfile && <UserProfile />}
       </div>
     </div>
